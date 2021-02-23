@@ -2,10 +2,10 @@ pragma solidity 0.6.12;
 
 import "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/BEP20.sol";
 
-import "./Candy.sol";
+import "./CandyToken.sol";
 
-// SyrupBar with Governance.
-contract SyrupBar is BEP20('SyrupBar Token', 'SYRUP') {
+// CatchupBar with Governance.
+contract CatchupBar is BEP20('CatchupBar Token', 'CATUP') {
     /// @notice Creates `_amount` token to `_to`. Must only be called by the owner (MasterChef).
     function mint(address _to, uint256 _amount) public onlyOwner {
         _mint(_to, _amount);
@@ -18,11 +18,11 @@ contract SyrupBar is BEP20('SyrupBar Token', 'SYRUP') {
     }
 
     // The CANDY TOKEN!
-    Candy public candy;
+    CandyToken public candy;
 
 
     constructor(
-        Candy _candy
+        CandyToken _candy
     ) public {
         candy = _candy;
     }

@@ -1,3 +1,8 @@
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const fs = require('fs');
+const { mnemonic, BSCSCANAPIKEY, ETHERSCANAPIKEY } = require('./env.json');
+
+
 module.exports = {
   // Uncommenting the defaults below
   // provides for an easier quick-start with Ganache.
@@ -5,6 +10,13 @@ module.exports = {
   // see <http://truffleframework.com/docs/advanced/configuration>
   // for more details on how to specify configuration options!
   //
+  plugins: [
+    'truffle-plugin-verify'
+  ],
+  api_keys: {
+    bscscan: BSCSCANAPIKEY,
+  },
+
   networks: {
    development: {
      host: "127.0.0.1",
@@ -23,7 +35,8 @@ module.exports = {
      network_id: 56,
      confirmations: 10,
      timeoutBlocks: 200,
-     skipDryRun: true
+     skipDryRun: true,
+     gasPrice: 10000000000,
    },
   },
   
